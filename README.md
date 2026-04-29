@@ -28,7 +28,46 @@ In building a **Multi-Agent Code Quality System**, the choice of orchestration l
 
 ---
 
-## 🧠 The Triple-Threat Architecture: How it Works
+## 📊 System Workflow
+
+The following diagram visualizes the autonomous loop of the **Agentic Auditor PRO**:
+
+```mermaid
+graph TD
+    A[User: Connect Repository] --> B[Auditor: Recursive Tree Scan]
+    B --> C[Auditor: Recreate Folder Hierarchy]
+    C --> D[Queue: Intelligent File Injection]
+    D --> E[Analyst Claude: Senior Audit & Reasoning]
+    E --> F{Bug Found?}
+    F -- No --> G[Status: Production Stable]
+    F -- Yes --> H[Fixer GPT-4o: Implement & Document]
+    H --> I[Evaluator Gemini: QA & Fail-Safe]
+    I --> J{Pass QA?}
+    J -- No --> E
+    J -- Yes --> K[SUCCESS: Update Master Change Log]
+    K --> L[Dashboard: Render Intelligence Report]
+```
+
+---
+
+## 🧠 How it Works: The Engineering Detail
+
+### 1. Structural Mirroring
+The process begins with the **Auditor**. Instead of just downloading files, it performs a full directory traversal via the GitHub API. It recreates your project's exact folder structure in the local `./Project` workspace. This is critical for modern frameworks where imports are path-sensitive.
+
+### 2. The Senior Audit Queue
+Every discovered file (`.js`, `.jsx`, `.ts`, `.tsx`) is injected into a high-priority queue. The **Orchestrator** manages this queue, ensuring that files are processed sequentially to prevent context window collapse and manage token budgets effectively.
+
+### 3. Multi-LLM Reasoning Loop
+For every file, the system runs a 3-stage intelligence loop:
+- **Phase A (Analysis)**: Claude 3.5 Sonnet identifies the "Why" and "Benefit" of a fix.
+- **Phase B (Action)**: GPT-4o applies the fix and inserts inline `/** AI FIX */` comments.
+- **Phase C (Validation)**: Gemini 1.5 Flash performs a high-speed QA check. If a fix fails, the "Error Feedback" is piped back into the loop for a re-try.
+
+### 4. Intelligence Reporting
+Once a file is fixed, the system updates the **Master Audit Change Log**. It doesn't just say "Fixed"; it retrieves the **Architect reasoning** from the Analyst and displays it on your dashboard, providing total transparency into the Agent's thought process.
+
+---
 
 The system operates using a specialized multi-agent pipeline where each AI model is assigned a role that matches its unique strengths.
 
