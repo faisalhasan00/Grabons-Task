@@ -24,7 +24,40 @@ Integrated with local analysis fallbacks. If an AI service (like Gemini or OpenA
 
 ---
 
-## 🛠️ Technology Stack
+## 🧠 The Triple-Threat Architecture: How it Works
+
+GrabOn Agent PRO operates using a specialized multi-agent pipeline where each AI model is assigned a role that matches its unique strengths.
+
+### 🤖 1. The Auditor (Recursive Crawler)
+- **Role**: Infrastructure & Discovery
+- **Duty**: This agent performs a deep, recursive scan of your GitHub repository. It recreates your entire folder hierarchy locally and identifies every `.js`, `.jsx`, `.ts`, and `.tsx` file that needs a senior-level audit.
+- **Why**: It ensures no file is left behind, no matter how deep it is hidden in your components or pages.
+
+### 🤖 2. The Analyst (Powered by Claude 3.5 Sonnet)
+- **Role**: Senior Software Architect
+- **Duty**: The Analyst reads your code with a "Senior Architect" lens. It doesn't just look for syntax errors; it looks for security risks, memory leaks, and architectural anti-patterns.
+- **Output**: Generates a high-level "Intelligence Report" for every file, explaining the "Why" and "Benefit" of any needed changes.
+
+### 🤖 3. The Fixer (Powered by GPT-4o)
+- **Role**: Lead Developer
+- **Duty**: Armed with the Analyst's report, the Fixer implements the actual code changes. It uses modern, stable design patterns and adds professional `/** AI FIX: ... */` documentation directly into your source code.
+- **Benefit**: Provides human-readable, educational code that explains itself to other developers.
+
+### 🤖 4. The Evaluator (Powered by Gemini 1.5 Flash)
+- **Role**: QA Engineer & Fail-Safe
+- **Duty**: The Evaluator reviews the final output. If the fix doesn't meet quality standards or if the AI service encounters an error, the Evaluator triggers a "Re-thinking" loop or switches to a local stable fallback.
+
+---
+
+## 🔄 The Autonomous Workflow
+1. **Connect**: The user enters a GitHub URL.
+2. **Crawl**: The **Auditor** builds a local mirror of the repository.
+3. **Analyze**: The **Analyst** identifies improvements and generates a strategy.
+4. **Repair**: The **Fixer** writes the documented code.
+5. **Validate**: The **Evaluator** confirms the fix is production-ready.
+6. **Report**: The **Master Change Log** updates the user on the dashboard.
+
+---
 - **Core**: TypeScript, Node.js (tsx)
 - **Backend**: Express.js (High-performance telemetry API)
 - **Frontend**: Vite + Vanilla JS (Glassmorphism Dashboard)
