@@ -81,7 +81,7 @@ export class Orchestrator {
                 const content = fs.readFileSync(path.join(CONFIG.TARGET_REPO, name), 'utf-8');
                 res.json({ 
                     content,
-                    report: this.reports[name] || "This file passed all senior checks and is production-stable."
+                    report: this.reports[name] || "# 🔮 Agentic Auditor PRO v6.0\n> **The Zero-Touch Production Auditor & Autonomous Repair Suite**\n\nAgentic Auditor PRO is a state-of-the-art, multi-agent AI ecosystem designed to autonomously crawl, audit, and repair production-grade repositories."
                 });
             } catch (e) { res.status(404).json({ error: 'File not found' }); }
         });
@@ -153,7 +153,8 @@ export class Orchestrator {
 
     public run() {
         fs.writeFileSync(PATHS.ACTIVITY, '');
-        this.logger.log('🚀 GRABON PRODUCTION AGENT v4.0');
+        this.logger.log('🚀 AGENTIC AUDITOR PRO v6.0');
+        this.logger.log('📡 Listening on: http://127.0.0.1:3000');
         this.logger.log('📂 Target: ' + CONFIG.TARGET_REPO);
     }
 }
