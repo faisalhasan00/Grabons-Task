@@ -18,6 +18,16 @@ The Agent doesn't just "silent-fix" code. Every modification includes an **Inlin
 
 ---
 
+## 🛠️ Engineering Decision: Why Antigravity?
+
+In building a **Multi-Agent Code Quality System**, the choice of orchestration layer is critical. We chose **Antigravity** over traditional copilots or chat-based frameworks for three reasons:
+
+1. **Autonomy vs. Interaction**: Most AI tools are designed as "Co-pilots" (human-in-the-loop). Antigravity is designed for **Autonomous Loops**. It provides the low-level primitives needed to build an agent that can plan 50 steps, recover from its own errors, and execute them without a human pressing "Tab."
+2. **Deterministic Tool Use**: Production code review requires precise file system and terminal interaction. Antigravity’s tool-calling architecture allows our agents to perform deep recursive crawls and structural mirrors that standard LLM wrappers simply cannot handle.
+3. **Multi-Model Orchestration**: Antigravity allows us to pipe the reasoning of **Claude 3.5**, the fixing precision of **GPT-4o**, and the evaluation speed of **Gemini** into a single cohesive stream. It acts as the "connective tissue" that enables our Triple-Threat architecture.
+
+---
+
 ## 🧠 The Triple-Threat Architecture: How it Works
 
 The system operates using a specialized multi-agent pipeline where each AI model is assigned a role that matches its unique strengths.
