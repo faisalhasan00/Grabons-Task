@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrabOn Agent - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+      /* New Tab Styles */
+      .tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+      .tab-btn { 
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer;
+        transition: all 0.3s;
+      }
+      .tab-btn.active { background: var(--accent); border-color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <!-- Glassmorphism Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="navbar glass">
+      <div class="nav-content">
+        <div class="logo">
+          <span class="logo-icon">🔮</span>
+          <h1>GrabOn AI Labs</h1>
+        </div>
+        <div class="nav-links">
+          <a href="#" class="active">Dashboard</a>
+          <a href="#">Repository</a>
+          <a href="#">Settings</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="dashboard-container">
+      <!-- GitHub Connection Section -->
+      <section class="card glass github-connect">
+        <h2>Connect GitHub Repository</h2>
+        <p>The Agent will automatically audit and fix the connected repository.</p>
+        <div class="input-group">
+          <input type="text" id="repo-url" placeholder="e.g., facebook/react" />
+          <input type="password" id="github-token" placeholder="GitHub PAT (Optional)" />
+          <button id="connect-btn" class="btn primary">Connect & Auto-Fix</button>
+        </div>
+      </section>
+
+      <!-- Main Layout Grid -->
+      <div class="grid-layout">
+        <!-- File Explorer -->
+        <section class="card glass file-explorer">
+          <div class="tabs">
+            <button id="tab-github" class="tab-btn active">GitHub (Source)</button>
+            <button id="tab-agent" class="tab-btn">Agent (Fixed Code)</button>
+          </div>
+          <div class="card-header">
+            <h3>Files <span class="badge" id="repo-badge">Not Connected</span></h3>
+          </div>
+          <div id="file-list" class="file-list">
+            <p class="empty-state">Connect a repository to see the magic happen.</p>
+          </div>
+        </section>
+
+        <!-- Code Viewer & Sharer -->
+        <section class="card glass code-viewer">
+          <div class="card-header">
+            <h3 id="current-file-name">Select a File</h3>
+            <div class="button-group">
+              <button id="push-btn" class="btn primary" disabled>Push Fix to GitHub</button>
+              <button id="share-btn" class="btn secondary" disabled>Copy Code</button>
+            </div>
+          </div>
+          <div class="code-container">
+            <pre><code id="code-content" class="empty-state">Agent fixes will appear here in real-time...</code></pre>
+          </div>
+          <!-- Reasoning Intelligence Report -->
+          <div id="reasoning-report" class="reasoning-report hidden">
+            <h4>🧠 Senior Architect Intelligence Report</h4>
+            <p id="reasoning-text">Select a fixed file to see the reasoning behind the changes.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Agent Telemetry -->
+      <section class="card glass telemetry-section">
+        <div class="card-header">
+          <h3>Autonomous Agent Telemetry</h3>
+          <div class="status-indicator online">
+            <span class="pulse"></span> <span id="agent-status-text">Ready</span>
+          </div>
+        </div>
+        <div id="telemetry-logs" class="terminal">
+          <p>Agent is waiting for connection signals...</p>
+        </div>
+      </section>
+      <!-- Master Change Log -->
+      <section class="card glass changelog-section">
+        <div class="card-header">
+          <h3>📜 Master Audit Change Log</h3>
+          <span class="badge" id="change-count">0 Changes</span>
+        </div>
+        <div id="changelog-container" class="changelog-grid">
+          <p class="empty-state">No changes have been made yet. The Agent is analyzing the codebase...</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
